@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Zandler - Kompetenz-Portfolio (Sales & Automation)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+
+    <style>
+        /* 1. Globale Einstellungen & Variablen */
+        :root {
+            --navy: #1E3A5F;
+            --orange: #FF6B35;
+            --white: #FFFFFF;
+            --light-gray: #f4f7f6;
+            --mid-gray: #e0e0e0;
+            --dark-gray: #333333;
+            --font-family: 'Inter', sans-serif;
+            --shadow: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-hover: 0 6px 16px rgba(0,0,0,0.1);
+            --radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--navy);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; margin-bottom: 20px; }
+        h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        h4 { font-size: 1.1rem; margin-bottom: 10px; color: var(--navy); }
+
+        p { margin-bottom: 1rem; }
+
+        /* 2. Layout: Header, Hero, CTA */
+        .header {
+            position: sticky;
+            top: 0;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--mid-gray);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem; /* Etwas kleiner für den längeren Namen */
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        .nav a {
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 20px;
+            padding: 5px 10px;
+            border-radius: var(--radius);
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover, .nav a.active {
+            background-color: var(--light-gray);
+        }
+
+        .nav a.cta-nav {
+            background-color: var(--orange);
+            color: var(--white);
+        }
+        .nav a.cta-nav:hover {
+            opacity: 0.9;
+        }
+
+        .hero {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .hero h1 { color: var(--white); }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 1rem auto 0;
+            opacity: 0.9;
+        }
+
+        .cta-section {
+            background-color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+            border-top: 1px solid var(--mid-gray);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--orange);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* 3. Skill-Matrix (Grid) */
+        #skills-overview {
+            padding: 3rem 0;
+            background-color: var(--white);
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background-color: var(--white);
+            border: 1px solid var(--mid-gray);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--orange);
+        }
+
+        .skill-card-icon {
+            margin-bottom: 15px;
+            color: var(--orange);
+        }
+        .skill-card-icon svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--navy);
+        }
+
+        .skill-card p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* 4. Skill-Detail Sektion */
+        #skill-details {
+            padding: 3rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        #skill-details-wrapper {
+            display: none;
+            background-color: var(--white);
+            border: 1px solid var(--mid-gray);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        #skill-details-wrapper.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .skill-detail-header {
+            border-bottom: 2px solid var(--orange);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .skill-detail-header p {
+            font-size: 1.1rem;
+            color: #444;
+            max-width: 900px;
+        }
+
+        .visuals-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .vis-container {
+            border: 1px solid var(--mid-gray);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+
+        .vis-container h4 {
+            font-weight: 600;
+            color: var(--navy);
+            border-bottom: 1px solid var(--mid-gray);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        /* Vis 1: Beispiel-Anwendung */
+        .vis-1 .example-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--orange);
+            background-color: #fff3ed;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Vis 2: Mehrwert */
+        .vis-2 {
+            background-color: #fafdff;
+        }
+        
+        .value-list {
+            list-style: none;
+        }
+        .value-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .value-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--orange);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* 5. Interaktive Elemente (CSS-basiert) */
+        .flowchart { text-align: center; }
+        .flow-node {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: var(--radius);
+            margin: 10px auto;
+            max-width: 200px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .flow-node:hover { background-color: var(--orange); transform: scale(1.05); }
+        .flow-arrow { font-size: 1.5rem; color: var(--dark-gray); margin: 5px 0; }
+        .flow-node .tooltip {
+            visibility: hidden;
+            width: 150px;
+            background-color: var(--dark-gray);
+            color: var(--white);
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -75px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .flow-node:hover .tooltip { visibility: visible; opacity: 1; }
+
+        .pricing-sim { text-align: center; }
+        .price-toggle { display: flex; justify-content: center; align-items: center; margin: 20px 0; }
+        .price-toggle span { font-weight: 600; padding: 0 10px; }
+        .switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+        .switch input { display:none; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--mid-gray); transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--orange); }
+        input:checked + .slider:before { transform: translateX(26px); }
+        #price-display { font-size: 2rem; font-weight: 700; color: var(--navy); margin-top: 10px; }
+
+        .heatmap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+        .heatmap-cell { height: 50px; border-radius: 4px; cursor: pointer; transition: all 0.3s ease; position: relative; }
+        .heatmap-cell:hover { transform: scale(1.1); border: 2px solid var(--navy); }
+        .heatmap-cell[data-value="1"] { background-color: #fff3ed; }
+        .heatmap-cell[data-value="5"] { background-color: #ffc9b5; }
+        .heatmap-cell[data-value="10"] { background-color: #ff8c66; }
+        .heatmap-cell[data-value="8"] { background-color: #FF6B35; }
+        .heatmap-cell .tooltip {
+            visibility: hidden;
+            width: 150px;
+            background-color: var(--dark-gray);
+            color: var(--white);
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 110%;
+            left: 50%;
+            margin-left: -75px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .heatmap-cell:hover .tooltip { visibility: visible; opacity: 1; }
+
+        .roadmap { position: relative; padding: 20px 0; }
+        .roadmap-line { position: absolute; left: 20px; top: 0; bottom: 0; width: 4px; background: var(--mid-gray); }
+        .roadmap-step { position: relative; padding-left: 50px; margin-bottom: 25px; }
+        .roadmap-step::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 4px solid var(--orange);
+            z-index: 1;
+        }
+        .roadmap-step:hover::before { background: var(--orange); }
+        .roadmap-step h5 { font-weight: 600; color: var(--navy); transition: color 0.3s; }
+        .roadmap-step:hover h5 { color: var(--orange); }
+        .roadmap-step p { font-size: 0.9rem; margin-bottom: 0; }
+        
+        .tabs { display: flex; border-bottom: 2px solid var(--mid-gray); margin-bottom: 15px; }
+        .tab-button {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #888;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+        .tab-button.active { color: var(--navy); border-bottom-color: var(--orange); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* 6. Responsive Design */
+        @media (max-width: 900px) {
+            .visuals-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .header .container { flex-direction: column; gap: 10px; }
+            .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
+            .nav a { margin-left: 5px; }
+            .skill-grid { grid-template-columns: 1fr 1fr; }
+            #skill-details-wrapper { padding: 1.5rem; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            .hero { padding: 3rem 0; }
+        }
+        @media (max-width: 480px) {
+            .skill-grid { grid-template-columns: 1fr; }
+        }
+
+        /* PESTEL Matrix */
+        .pestel-matrix { width:100%; border-collapse: collapse; }
+        .pestel-matrix th, .pestel-matrix td { border:1px solid var(--mid-gray); padding:8px; text-align:center; }
+        .pestel-matrix th { background:#f7fafc; }
+        .pestel-badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:0.8rem; }
+        .p-low { background:#e6f4ea; }
+        .p-med { background:#fff3ed; }
+        .p-high { background:#ffe0d1; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">Michael Zandler | Kompetenz-Portfolio</a>
+            <nav class="nav">
+                <a href="#skills-overview">Skills</a>
+                <a href="#skill-details">Details</a>
+                <a href="#cta" class="cta-nav">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="container">
+                <h1>Mein Kompetenz-Portfolio für Sales & Automation</h1>
+                <p>
+                    Sehr geehrte Entscheidungsträger,
+                    als Berufseinsteiger mit Leidenschaft für Daten und Effizienz zeige ich Ihnen hier 11 Konzepte, die ich verstehe und proaktiv für Ihr Unternehmen umsetzen möchte. Dieses interaktive Portfolio demonstriert meine Denkweise und mein technisches Verständnis.
+                </p>
+                <p style="font-size: 1rem; opacity: 0.8; margin-top: 10px;">- Michael Zandler</p>
+            </div>
+        </section>
+
+        <section id="skills-overview">
+            <div class="container">
+                <h2>Kompetenz-Matrix</h2>
+                
+                <div class="skill-grid">
+                    
+                    <div class="skill-card" data-skill-id="predictive-sales" role="button" tabindex="0">
+                        <div class="skill-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l-3-3L2.25 18zM12 15l3 3m0 0l2.25-2.25M15 18l2.25 2.25M15 18l2.25-2.25M15 18l-2.25-2.25M15 18l-3-3m0 0l-2.25 2.25m2.25-2.25l-2.25 2.25M12 15l-2.25 2.25" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 15l3 3m0 0l2.25-2.25M15 18l2.25 2.25M15 18l2.25-2.25M15 18l-2.25-2.25M15 18l-3-3m0 0l-2.25 2.25m2.25-2.25l-2.25 2.25M19.5 12c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z" /></svg>
+                        </div>
+                        <h3>Predictive Sales</h3>
+                        <p>Prognosen für zukünftige Kundenkäufe (z. B. mittels Regressionsmodellen) zur Absatzoptimierung.</p>
+                    </div>
+                    
+                    <div class="skill-card" data-skill-id="lead-identifizierung" role="button" tabindex="0">
+                        <div class="skill-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5l-7.5 7.5-7.5-7.5" /><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+                        </div>
+                        <h3>Lead-Identifizierung/-Such-Agenten</h3>
+                        <p>Automatisierte Lead-Suche durch AI-Agenten, z.B. via Apollo.io & Make/Zapier/N8N.</p>
+                    </div>
+
+                    <div class="skill-card" data-skill-id="cold-email-automation" role="button" tabindex="0">
+                        <div class="skill-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.625a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                        </div>
+                        <h3>Cold-E-Mail-Automation</h3>
+                        <p>Automatische Versand-Pipelines zur Neukunden-Akquise auf Basis von Lead-Identifizierung.</p>
+                    </div>
+
+                    <div class="skill-card" data-skill-id="customer-sales-volume" role="button" tabindex="0">
+                        <div class="skill-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l-3-3L2.25 18zM12 15l3 3m0 0l2.25-2.25M15 18l2.25 2.25M15 18l2.25-2.25M15 18l-2.25-2.25M15 18l-3-3m0 0l-2.25 2.25m2.25-2.25l-2.25 2.25M12 15l-2.25 2.25" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 15a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        </div>
+                        <h3>Customer-Sales-Volume Überwachung</h3>
+                        <p>Kontinuierliche Analyse von Absatzdaten, Frühwarnung bei Kundenabwanderung.</p>
+                    </div>
+
+                    <div class="skill-card" data-skill-id="intelligent-pricing" role="button" tabindex="0">
+                        <div class="skill-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.536M15 17.182l-.879-.536M12 19.5c.621 0 1.204-.2 1.73-.564m-3.46 0A9 9 0 0112 3c5.183 0 9.421 3.979 9.954 9h-1.908A7.5 7.5 0 0012 4.5 7.5 7.5 0 004.046 12H2.046A9 9 0 0112 3z" /></svg>
+                        </div>
+                        <h3>Intelligent Pricing</h3>
+                        <p>Dynamische Preisfindung mittels wissenschaftlicher Methoden und Predictive Sales.</p>
+                    </div>
+
+                    <div class="skill-card" data-skill-id="marktanalysen" role="button" tabindex="0">
+                        <div class="skill-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75L21 12m0 0l-9 5.25M21 12H3" /></svg>
+                        </div>
+                        <h3>Marktanalysen & Expansion</h3>
+                        <p>Neue Märkte per Umfrage/AI-Analyse identifizieren, Eintrittsstrategie konzipieren.</p>
+                    </div>
+
+                    <div class="skill-card" data-skill-id="competition-analysis" role="button" tabindex="0">
+                        <div class="skill-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                        </div>
+                        <h3>Competition Analysis</h3>
+                        <p>Monatliche Wettbewerberbeobachtung durch AI, Alerts und Detailberichte.</p>
+                    </div>
+
+                    <div class="skill-card" data-skill-id="white-spot-analyse" role="button" tabindex="0">
+                        <div class="skill-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
+                        </div>
+                        <h3>White-Spot-Analyse</h3>
+                        <p>Einkaufspotenziale im bestehenden Kundenstamm lokalisieren.</p>
+                    </div>
+
+                    <div class="skill-card" data-skill-id="generative-engine" role="button" tabindex="0">
+                        <div class="skill-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3.75H12M15.75 3.75H12M12 3.75V7.5M12 7.5a2.25 2.25 0 01-2.25 2.25H7.5a2.25 2.25 0 01-2.25-2.25V7.5m3 0a2.25 2.25 0 00-2.25-2.25H7.5a2.25 2.25 0 00-2.25 2.25V7.5m9 0a2.25 2.25 0 012.25 2.25h2.25a2.25 2.25 0 012.25 2.25V15a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25V15m3 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25V15m-3-7.5a2.25 2.25 0 012.25 2.25h2.25a2.25 2.25 0 012.25 2.25V15a2.25 2.25 0 01-2.25 2.25h-2.25a2.25 2.25 0 01-2.25-2.25V15m3 0a2.25 2.25 0 00-2.25-2.25H15a2.25 2.25 0 00-2.25 2.25V15m-6-7.5V15a2.25 2.25 0 002.25 2.25h2.25a2.25 2.25 0 002.25-2.25V9.75m-6 0a2.25 2.25 0 012.25-2.25h2.25a2.25 2.25 0 012.25 2.25V15m-6 0V18a2.25 2.25 0 002.25 2.25h2.25a2.25 2.25 0 002.25-2.25V15m-6 0h6" /></svg>
+                        </div>
+                        <h3>Generative Engine/LLM Optimization</h3>
+                        <p>Verbesserte Sichtbarkeit im KI-Suchumfeld, optimierte Präsenz durch GEO/LLMO.</p>
+                    </div>
+
+                    <div class="skill-card" data-skill-id="b2b-tender-discovery" role="button" tabindex="0">
+                        <div class="skill-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                        </div>
+                        <h3>Automated B2B Tender Discovery</h3>
+                        <p>Automatisierte Suche/Analyse von B2B-Ausschreibungen, Projektfit als Service.</p>
+                    </div>
+
+                    <div class="skill-card" data-skill-id="automatisierung-planning" role="button" tabindex="0">
+                        <div class="skill-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" /></svg>
+                        </div>
+                        <h3>Weitere Automatisierung-Planning</h3>
+                        <p>Entwicklung maßgeschneiderter Automatisierung (Use Cases je Unternehmen).</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="skill-details">
+            <div class="container">
+                <h2>Skill-Details</h2>
+                <p>Klicken Sie auf eine Karte in der Matrix, um meine konzeptionellen Ansätze und den potenziellen Mehrwert für Ihr Unternehmen zu sehen.</p>
+                
+                <div id="skill-details-wrapper">
+                    </div>
+
+            </div>
+        </section>
+
+
+        <section id="cta" class="cta-section">
+            <div class="container">
+                <h2>Lassen Sie uns sprechen</h2>
+                <p style="max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Ich brenne darauf, diese Konzepte in die Praxis umzusetzen und einen echten Mehrwert für Ihr Unternehmen zu schaffen. Ich freue mich auf ein persönliches Gespräch, um zu erörtern, wie ich Ihr Team unterstützen kann.
+                </p>
+                
+                <a href="mailto:michael.zandler@web.de?subject=Anfrage%20zu%20Ihrem%20Kompetenz-Portfolio" class="cta-button">Michael Zandler kontaktieren</a>
+                
+            </div>
+        </section>
+
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. Skill-Datenbank (Angepasst für "Berufsanfänger")
+            const skillData = {
+                'predictive-sales': {
+                    title: 'Predictive Sales',
+                    description: 'Prognosen für zukünftige Kundenkäufe (z. B. mittels Regressionsmodellen) zur Absatzoptimierung.',
+                    vis1_title: 'Realistische Regressionsgrafik: Umsatzprognosen je Kunde (Jan–Dez 2026)',
+                    vis1_content: '<span class="example-label">Konzept: Mehrere Kundenkurven (Forecast)</span><canvas id="predictiveChart"></canvas>',
+                    vis2_title: 'Mehrwert: Potenziale (Qualitativ)',
+                    vis2_content: `
+                        <p>Ich verstehe, wie man datenbasierte Entscheidungen trifft:</p>
+                        <ul class="value-list">
+                            <li>Bessere Vorratsplanung durch genaue Absatzprognosen.</li>
+                            <li>Individuelle, proaktive Kundenansprache basierend auf Kaufwahrscheinlichkeiten.</li>
+                            <li>Objektive, datenbasierte Entscheidungen statt Bauchgefühl.</li>
+                        </ul>
+                    `,
+                    initFunction: 'initPredictiveChart'
+                },
+                'lead-identifizierung': {
+                    title: 'Lead-Identifizierung / Such-Agenten',
+                    description: 'Automatisierte Lead-Suche durch AI-Agenten, z.B. via Apollo.io & Make/Zapier/N8N.',
+                    vis1_title: 'Konzept: Automatisierungs-Flow',
+                    vis1_content: `
+                        <span class="example-label">Konzept: Automatisierungs-Flow (Lead-Gen)</span>
+                        <div class="flowchart">
+                            <div class="flow-node">1. Anforderungsprofil (ICP) <span class="tooltip">Ideal Customer Profile</span></div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-node">2. AI-Agent (z.B. Apollo) <span class="tooltip">Sucht & validiert</span></div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-node">3. Automation (z.B. Make) <span class="tooltip">Filtert & leitet weiter</span></div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-node">4. CRM (z.B. HubSpot) <span class="tooltip">Qualifizierter Lead</span></div>
+                        </div>
+                    `,
+                    vis2_title: 'Mehrwert: Qualitative Vorteile',
+                    vis2_content: `
+                        <p>Ich kann den Vertrieb von repetitiven Aufgaben entlasten:</p>
+                        <ul class="value-list">
+                            <li>Drastisch schnellere Prozessdurchläufe bei der Lead-Generierung.</li>
+                            <li>Höhere Pipeline-Transparenz durch kontinuierlichen Lead-Zufluss.</li>
+                            <li>Nachhaltige Skalierbarkeit: Das System arbeitet 24/7.</li>
+                            <li>Fokussierung des Vertriebsteams auf "Abschluss" statt "Suche".</li>
+                        </ul>
+                    `,
+                    initFunction: null
+                },
+                'cold-email-automation': {
+                    title: 'Cold-E-Mail-Automation',
+                    description: 'Automatische Versand-Pipelines zur Neukunden-Akquise auf Basis von Lead-Identifizierung.',
+                    vis1_title: 'Konzept: Sequenz-Funnel',
+                    vis1_content: '<span class="example-label">Konzept: Sequenz-Funnel (Erfolgsraten)</span><canvas id="emailChart"></canvas>',
+                    vis2_title: 'Mehrwert: Qualitative Mehrwertgrafik',
+                    vis2_content: `
+                        <p>Ich verstehe, wie man Outreach skaliert und messbar macht:</p>
+                        <ul class="value-list">
+                            <li>Strukturierter, personalisierter Outreach im großen Stil.</li>
+                            <li>Bessere Nachverfolgbarkeit und A/B-Testing von Botschaften.</li>
+                            <li>Konsistente Ansprache und professionelles Follow-up.</li>
+                        </ul>
+                    `,
+                    initFunction: 'initEmailChart'
+                },
+                'customer-sales-volume': {
+                    title: 'Customer-Sales-Volume Überwachung',
+                    description: 'Kontinuierliche Analyse von Absatzdaten, Frühwarnung bei Kundenabwanderung.',
+                    vis1_title: 'Konzept: Churn-Frühwarnung',
+                    vis1_content: '<span class="example-label">Konzept: Churn-Frühwarnung (Trend-Analyse)</span><canvas id="volumeChart"></canvas>',
+                    vis2_title: 'Mehrwert: Heatmap (Qualitativ)',
+                    vis2_content: `
+                        <p>Ich kann proaktiv helfen, Kundenabwanderung zu verhindern:</p>
+                        <ul class="value-list">
+                            <li>Echtzeit-Erkennung von Trends (z.B. sinkende Bestellfrequenz).</li>
+                            <li>Frühwarnsystem für "Churn Risk" (Abwanderungsrisiko).</li>
+                            <li>Frühzeitige Handlungsempfehlungen zur Kundenbindung.</li>
+                            <li>Identifikation von Upselling-Potenzialen.</li>
+                        </ul>
+                    `,
+                    initFunction: 'initVolumeChart'
+                },
+                'intelligent-pricing': {
+                    title: 'Intelligent Pricing',
+                    description: 'Dynamische Preisfindung mittels wissenschaftlicher Methoden (z.B. Van Westendorp, Conjoint) und Predictive Sales.',
+                    vis1_title: 'Beispielkurven: Van-Westendorp-Preisanalyse',
+                    vis1_content: `
+                        <span class="example-label">Konzept: Preis-Sensitivität (Van Westendorp)</span>
+                        <canvas id="vwChart"></canvas>
+                    `,
+                    vis2_title: 'Mehrwert: Qualitative Darstellung',
+                    vis2_content: `
+                        <p>Ich bringe wissenschaftliche Methoden in die Preisfindung ein:</p>
+                        <ul class="value-list">
+                            <li>Bessere Marktpositionierung durch datenbasierte Preise.</li>
+                            <li>Sichtbarkeit von Preistrends und Zahlungsbereitschaften.</li>
+                            <li>Orientierung an validierten Methoden statt Raten.</li>
+                            <li>Maximierung der Marge ohne Verlust von Marktanteilen.</li>
+                        </ul>
+                    `,
+                    initFunction: 'initVanWestendorpChart'
+                },
+                'marktanalysen': {
+                    title: 'Marktanalysen & Expansion',
+                    description: 'Neue Märkte per Umfrage/AI-Analyse identifizieren, Eintrittsstrategie konzipieren.',
+                    vis1_title: 'PESTEL-Matrix: Vergleich neuer Märkte',
+                    vis1_content: `
+                        <span class="example-label">Konzept: Matrix-Bewertung (1 = gering, 5 = hoch)</span>
+                        <table class="pestel-matrix">
+                            <thead>
+                                <tr>
+                                    <th>Faktor</th>
+                                    <th>Markt A</th>
+                                    <th>Markt B</th>
+                                    <th>Markt C</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>P – Political</td><td><span class="pestel-badge p-med">3</span></td><td><span class="pestel-badge p-high">4</span></td><td><span class="pestel-badge p-low">2</span></td></tr>
+                                <tr><td>E – Economic</td><td><span class="pestel-badge p-high">4</span></td><td><span class="pestel-badge p-med">3</span></td><td><span class="pestel-badge p-med">3</span></td></tr>
+                                <tr><td>S – Social</td><td><span class="pestel-badge p-low">2</span></td><td><span class="pestel-badge p-med">3</span></td><td><span class="pestel-badge p-high">4</span></td></tr>
+                                <tr><td>T – Technological</td><td><span class="pestel-badge p-high">5</span></td><td><span class="pestel-badge p-med">3</span></td><td><span class="pestel-badge p-med">3</span></td></tr>
+                                <tr><td>E – Environmental</td><td><span class="pestel-badge p-med">3</span></td><td><span class="pestel-badge p-high">4</span></td><td><span class="pestel-badge p-low">2</span></td></tr>
+                                <tr><td>L – Legal</td><td><span class="pestel-badge p-med">3</span></td><td><span class="pestel-badge p-med">3</span></td><td><span class="pestel-badge p-high">4</span></td></tr>
+                            </tbody>
+                        </table>
+                    `,
+                    vis2_title: 'Mehrwert: Opportunity-Chart (Qualitativ)',
+                    vis2_content: `
+                        <p>Ich kann helfen, Wachstumsentscheidungen vorzubereiten:</p>
+                        <ul class="value-list">
+                            <li>Systematische Identifikation und Bewertung von Marktchancen.</li>
+                            <li>Klare Visualisierung von Expansionsmöglichkeiten.</li>
+                            <li>Reduzierung des Risikos bei Markteintritten.</li>
+                            <li>Datenbasierte Grundlage für strategische Entscheidungen.</li>
+                        </ul>
+                    `,
+                    initFunction: null
+                },
+                'competition-analysis': {
+                    title: 'Competition Analysis',
+                    description: 'Monatliche Wettbewerberbeobachtung durch AI, Alerts und Detailberichte.',
+                    vis1_title: 'Konzept-Mockup: Marktanteils-Analyse',
+                    vis1_content: '<span class="example-label">Konzept: Marktanteils-Analyse (Mockup)</span><div style="max-height: 300px; margin: 0 auto; max-width: 300px;"><canvas id="competitionChart"></canvas></div>',
+                    vis2_title: 'Mehrwert: Qualitatives Ranking',
+                    vis2_content: `
+                        <p>Ich kann ein systematisches Wettbewerbs-Monitoring aufsetzen:</p>
+                        <ul class="value-list">
+                            <li>Zielgerichtete Wettbewerbsanalyse statt manueller Suchen.</li>
+                            <li>Erstellung einer Chancenmatrix (eigene Stärken vs. Schwächen).</li>
+                            <li>Frühzeitige Risikoerkennung bei neuen Moves von Wettbewerbern.</li>
+                        </ul>
+                    `,
+                    initFunction: 'initCompetitionChart'
+                },
+                'white-spot-analyse': {
+                    title: 'White-Spot-Analyse',
+                    description: 'Einkaufspotenziale im bestehenden Kundenstamm lokalisieren (Was kaufen sie noch nicht?).',
+                    vis1_title: 'Produktgruppenabdeckung beim Kunden (verkauft vs. nicht)',
+                    vis1_content: `
+                        <span class="example-label">Konzept: Abdeckung nach Produktgruppe</span>
+                        <canvas id="whiteSpotChart"></canvas>
+                    `,
+                    vis2_title: 'Mehrwert: Qualitative Potenziale',
+                    vis2_content: `
+                        <p>Ich helfe, ungenutztes Potenzial im Kundenstamm zu finden:</p>
+                        <ul class="value-list">
+                            <li>Erhöhte Kundenbindung durch gezielte Ansprache.</li>
+                            <li>Erstellung einer klaren Chancenmatrix für Cross- und Upselling.</li>
+                            <li>Effizientere Nutzung des bestehenden Kundenstamms.</li>
+                            <li>Steigerung des "Share of Wallet" pro Kunde.</li>
+                        </ul>
+                    `,
+                    initFunction: 'initWhiteSpotChart'
+                },
+                'generative-engine': {
+                    title: 'Generative Engine/LLM Optimization',
+                    description: 'Verbesserte Sichtbarkeit im KI-Suchumfeld (Perplexity, ChatGPT etc.), optimierte Präsenz durch GEO/LLMO.',
+                    vis1_title: 'Konzept: GEO/LLMO Roadmap',
+                    vis1_content: `
+                        <span class="example-label">Konzept: GEO/LLMO Roadmap</span>
+                        <div class="roadmap">
+                            <div class="roadmap-line"></div>
+                            <div class="roadmap-step">
+                                <h5>Phase 1: Audit & Keyword-Cluster</h5>
+                                <p>Analyse des Status Quo, Definition der GEO/LLMO-Ziele.</p>
+                            </div>
+                            <div class="roadmap-step">
+                                <h5>Phase 2: Content-Erstellung</h5>
+                                <p>Erstellung von KI-optimiertem, informativem Content.</p>
+                            </div>
+                            <div class="roadmap-step">
+                                <h5>Phase 3: Technische Optimierung</h5>
+                                <p>Implementierung von Schema-Markup, Sitelinks.</p>
+                            </div>
+                            <div class="roadmap-step">
+                                <h5>Phase 4: Monitoring & Reporting</h5>
+                                <p>Kontinuierliche Messung der Sichtbarkeit in Gen-Engines.</p>
+                            </div>
+                        </div>
+                    `,
+                    vis2_title: 'Mehrwert: Qualitative Impact-Grafik',
+                    vis2_content: `
+                        <p>Ich verstehe die Zukunft der Suche und Positionierung:</p>
+                        <ul class="value-list">
+                            <li>Höhere digitale Sichtbarkeit in neuen Suchparadigmen (KI-Antworten).</li>
+                            <li>Bessere Auffindbarkeit für relevante, komplexe Anfragen.</li>
+                            <li>Positionierung als Vordenker (Thought Leader) im KI-Umfeld.</li>
+                        </ul>
+                    `,
+                    initFunction: null
+                },
+                'b2b-tender-discovery': {
+                    title: 'Automated B2B Tender Discovery',
+                    description: 'Automatisierte Suche/Analyse von B2B-Ausschreibungen, Projektfit als Service.',
+                    vis1_title: 'Konzept: Tender-Discovery-Workflow',
+                    vis1_content: `
+                        <span class="example-label">Konzept: Tender-Discovery-Workflow</span>
+                        <div class="flowchart">
+                            <div class="flow-node">1. Monitoring (1000e Portale) <span class="tooltip">AI-Crawler scannt täglich</span></div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-node">2. AI-Filterung (Profile-Fit) <span class="tooltip">Passt Anforderungsprofil?</span></div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-node">3. Score: 95% Fit (Hoch) <span class="tooltip">Beispiel-Ausschreibung A</span></div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-node">4. Alert an Vertriebs-Team <span class="tooltip">Sofortige Benachrichtigung</span></div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-node">5. Ausgearbeitetes indiv. Angebot <span class="tooltip">Schnell & passgenau</span></div>
+                        </div>
+                    `,
+                    vis2_title: 'Mehrwert: Qualitative Vorteile',
+                    vis2_content: `
+                        <p>Ich kann den Overhead bei der Ausschreibungssuche eliminieren:</p>
+                        <ul class="value-list">
+                            <li>Schnellere und umfassendere Ausschreibungsfindung.</li>
+                            <li>Gezieltere Teilnahmen (nur bei hohem "Fit-Score").</li>
+                            <li>Massive Vermeidung von manuellem Overhead (Suchen & Lesen).</li>
+                        </ul>
+                    `,
+                    initFunction: null
+                },
+                'automatisierung-planning': {
+                    title: 'Weitere Automatisierung-Planning',
+                    description: 'Entwicklung maßgeschneiderter Automatisierung (Use Cases je Unternehmen) mit Tools wie Make/Zapier/N8N.',
+                    vis1_title: 'Konzept: Prozess-Automatisierungs-Matrix',
+                    vis1_content: `
+                        <span class="example-label">Konzept: Implementierungsschritte (Beispiel)</span>
+                        <div class="tabs-container">
+                            <div class="tabs">
+                                <button class="tab-button active" data-tab="tab1">Implementierung</button>
+                                <button class="tab-button" data-tab="tab2">Timeline-Konzept</button>
+                            </div>
+                            <div id="tab1" class="tab-content active">
+                                <h5>Matrix (Beispiel-Prozess)</h5>
+                                <p><strong>Use Case:</strong> Rechnungsfreigabe</p>
+                                <ul style="list-style-position: inside; padding-left: 10px;">
+                                    <li>Schritt 1: E-Mail-Parsing (PDF-Extraktion)</li>
+                                    <li>Schritt 2: OCR & Datenvalidierung</li>
+                                    <li>Schritt 3: Freigabe-Link (Slack/Teams)</li>
+                                    <li>Schritt 4: Buchung in DATEV/SAP</li>
+                                </ul>
+                            </div>
+                            <div id="tab2" class="tab-content">
+                                <h5>Timeline-Konzept</h5>
+                                <p><strong>Woche 1:</strong> Use-Case-Workshop & Priorisierung</p>
+                                <p><strong>Woche 2-3:</strong> Prototyping (MVP) in Make/N8N</p>
+                                <p><strong>Woche 4:</strong> Live-Demo & Rollout-Planung</p>
+                            </div>
+                        </div>
+                    `,
+                    vis2_title: 'Mehrwert: Chancen-Tabelle (Qualitativ)',
+                    vis2_content: `
+                        <p>Ich kann maßgeschneiderte Lösungen für Ihre Engpässe entwickeln:</p>
+                        <ul class="value-list">
+                            <li>Klare Übersicht typischer Prozessvorteile (Zeit, Kosten, Qualität).</li>
+                            <li>Messbare Entlastung von Mitarbeitern von repetitiven Aufgaben.</li>
+                            <li>Fokussierung der Teams auf wertschöpfende Arbeit.</li>
+                            <li>Steigerung der Prozess-Sicherheit und Reduzierung von Fehlern.</li>
+                        </ul>
+                    `,
+                    initFunction: 'initTabs'
+                }
+            };
+
+            // 2. Event Listener (Keine Änderung nötig)
+            const skillGrid = document.querySelector('.skill-grid');
+            const detailsWrapper = document.getElementById('skill-details-wrapper');
+            let activeCard = null;
+            let activeCharts = [];
+
+            skillGrid.addEventListener('click', (e) => {
+                const card = e.target.closest('.skill-card');
+                if (!card) return;
+
+                const skillId = card.dataset.skillId;
+                const data = skillData[skillId];
+
+                activeCharts.forEach(chart => chart.destroy());
+                activeCharts = [];
+
+                if(activeCard) {
+                    activeCard.style.borderColor = 'var(--mid-gray)';
+                }
+                activeCard = card;
+                card.style.borderColor = 'var(--orange)';
+                
+                detailsWrapper.innerHTML = `
+                    <div class="skill-detail-header">
+                        <h2>${data.title}</h2>
+                        <p>${data.description}</p>
+                    </div>
+                    <div class="visuals-grid">
+                        <div class="vis-container vis-1">
+                            <h4>${data.vis1_title}</h4>
+                            ${data.vis1_content}
+                        </div>
+                        <div class="vis-container vis-2">
+                            <h4>${data.vis2_title}</h4>
+                            ${data.vis2_content}
+                        </div>
+                    </div>
+                `;
+
+                detailsWrapper.classList.add('active');
+                
+                const detailsSection = document.getElementById('skill-details');
+                if (window.innerWidth < 768) {
+                    // Auf Mobilgeräten scrollen wir zur Karte selbst
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    // Auf dem Desktop scrollen wir zum Detail-Wrapper
+                    detailsWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+
+                if (data.initFunction) {
+                    window[data.initFunction]();
+                }
+            });
+            
+            // 3. Chart- und Interaktivitäts-Funktionen (Unverändert außer den gewünschten Anpassungen)
+            
+            window.initPredictiveChart = () => {
+                const ctx = document.getElementById('predictiveChart').getContext('2d');
+                const labels = ['Jan 26','Feb 26','Mrz 26','Apr 26','Mai 26','Jun 26','Jul 26','Aug 26','Sep 26','Okt 26','Nov 26','Dez 26'];
+                const chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels,
+                        datasets: [
+                            {
+                                label: 'Kunde A',
+                                data: [80,84,86,88,92,95,97,100,104,110,115,120],
+                                borderColor: 'rgba(30,58,95,1)',
+                                fill: false,
+                                tension: 0.3
+                            },
+                            {
+                                label: 'Kunde B',
+                                data: [60,62,65,67,70,72,70,68,66,65,64,63],
+                                borderColor: 'rgba(255,107,53,1)',
+                                fill: false,
+                                tension: 0.3
+                            },
+                            {
+                                label: 'Kunde C',
+                                data: [50,55,60,66,73,81,88,92,96,102,108,115],
+                                borderColor: 'rgba(99,179,237,1)',
+                                fill: false,
+                                tension: 0.3
+                            },
+                            {
+                                label: 'Kunde D',
+                                data: [120,118,122,124,126,130,132,135,137,139,140,142],
+                                borderColor: 'rgba(60,179,113,1)',
+                                fill: false,
+                                tension: 0.3
+                            }
+                        ]
+                    },
+                    options: { 
+                        responsive: true,
+                        scales: {
+                            y: {
+                                title: { display: true, text: 'Umsatz (Tsd. €)' },
+                                ticks: { callback: (v)=> v + '' }
+                            },
+                            x: { title: { display: true, text: 'Monate (2026)' } }
+                        },
+                        plugins: { legend: { position: 'bottom' } }
+                    }
+                });
+                activeCharts.push(chart);
+            };
+
+            window.initEmailChart = () => {
+                const ctx = document.getElementById('emailChart').getContext('2d');
+                const chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Gesendet', 'Geöffnet', 'Geantwortet', 'Termin'],
+                        datasets: [{
+                            label: 'E-Mail Sequenz (Konzept)',
+                            data: [100, 65, 20, 4],
+                            backgroundColor: [
+                                'rgba(30, 58, 95, 0.7)',
+                                'rgba(30, 58, 95, 0.5)',
+                                'rgba(255, 107, 53, 0.7)',
+                                'rgba(255, 107, 53, 1)'
+                            ],
+                            borderColor: 'rgba(30, 58, 95, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: { 
+                        indexAxis: 'y', 
+                        responsive: true,
+                        plugins: { legend: { display: false } }
+                    }
+                });
+                activeCharts.push(chart);
+            };
+
+            window.initVolumeChart = () => {
+                const ctx = document.getElementById('volumeChart').getContext('2d');
+                const chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mrz', 'Apr', 'Mai', 'Jun'],
+                        datasets: [
+                            {
+                                label: 'Kunde A (Stabil)',
+                                data: [120, 122, 118, 125, 120, 123],
+                                borderColor: 'rgba(30, 58, 95, 1)',
+                                fill: false,
+                            },
+                            {
+                                label: 'Kunde B (Churn Risk!)',
+                                data: [150, 140, 110, 90, 70, 50],
+                                borderColor: 'rgba(255, 107, 53, 1)',
+                                backgroundColor: 'rgba(255, 107, 53, 0.1)',
+                                fill: true,
+                            },
+                             {
+                                label: 'Kunde C (Wachstum)',
+                                data: [50, 60, 75, 90, 110, 130],
+                                borderColor: 'rgba(60, 179, 113, 1)',
+                                fill: false,
+                            }
+                        ]
+                    },
+                    options: { responsive: true }
+                });
+                activeCharts.push(chart);
+            };
+
+            // Van Westendorp Beispielkurven
+            window.initVanWestendorpChart = () => {
+                const ctx = document.getElementById('vwChart').getContext('2d');
+                const prices = [10,20,30,40,50,60,70,80,90,100];
+                // Beispielhafte kumulative Kurven (% Befragte)
+                const tooCheap = [90,80,65,50,38,28,20,14,10,8];
+                const bargain =  [80,70,60,50,40,32,25,20,16,13];
+                const expensive=[10,15,22,30,40,50,60,72,82,90];
+                const tooExp   =[5,8,12,18,28,40,55,70,82,92];
+                const chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: prices.map(p => p + ' €'),
+                        datasets: [
+                            { label: 'Zu billig', data: tooCheap, borderColor:'rgba(255,107,53,1)', fill:false, tension:0.25 },
+                            { label: 'Bargain', data: bargain, borderColor:'rgba(30,58,95,1)', fill:false, tension:0.25 },
+                            { label: 'Teuer', data: expensive, borderColor:'rgba(99,179,237,1)', fill:false, tension:0.25 },
+                            { label: 'Zu teuer', data: tooExp, borderColor:'rgba(60,179,113,1)', fill:false, tension:0.25 }
+                        ]
+                    },
+                    options: {
+                        responsive:true,
+                        plugins:{ legend:{ position:'bottom' } },
+                        scales:{
+                            y:{ title:{ display:true, text:'% der Befragten' }, min:0, max:100 },
+                            x:{ title:{ display:true, text:'Preis' } }
+                        }
+                    }
+                });
+                activeCharts.push(chart);
+            };
+
+            window.initCompetitionChart = () => {
+                const ctx = document.getElementById('competitionChart').getContext('2d');
+                const chart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Ihr Unternehmen (Konzept)', 'Wettbewerber A', 'Wettbewerber B', 'Andere'],
+                        datasets: [{
+                            label: 'Marktanteil (Konzept)',
+                            data: [32, 27, 20, 21],
+                            backgroundColor: [
+                                'rgba(255, 107, 53, 1)',
+                                'rgba(30, 58, 95, 0.8)',
+                                'rgba(30, 58, 95, 0.5)',
+                                'rgba(180, 180, 180, 0.5)'
+                            ],
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: true }
+                });
+                activeCharts.push(chart);
+            };
+
+            window.initWhiteSpotChart = () => {
+                const ctx = document.getElementById('whiteSpotChart').getContext('2d');
+                const labels = ['Dichtungen','Filter','Ersatzteile','Baugruppen','Service'];
+                // 1 = vorhanden (verkauft), 1 = nicht vorhanden
+                const sold =    [1,0,1,0,1];
+                const notSold = [0,1,0,1,0];
+                const chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels,
+                        datasets: [
+                            { label: 'Verkauft', data: sold, backgroundColor: 'rgba(30,58,95,0.8)', stack:'abdeckung' },
+                            { label: 'Noch nicht', data: notSold, backgroundColor: 'rgba(255,107,53,0.8)', stack:'abdeckung' }
+                        ]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        scales: {
+                            x: { stacked:true, ticks:{ stepSize:1, callback:(v)=> v===1?'Ja':' ' }, max:1 },
+                            y: { stacked:true }
+                        },
+                        plugins: { legend: { position:'bottom' } }
+                    }
+                });
+                activeCharts.push(chart);
+            };
+
+            window.initTabs = () => {
+                const tabContainer = document.querySelector('.tabs-container');
+                const tabs = tabContainer.querySelectorAll('.tab-button');
+                const contents = tabContainer.querySelectorAll('.tab-content');
+
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        tabs.forEach(t => t.classList.remove('active'));
+                        contents.forEach(c => c.classList.remove('active'));
+                        tab.classList.add('active');
+                        document.getElementById(tab.dataset.tab).classList.add('active');
+                    });
+                });
+            };
+
+        });
+    </script>
+</body>
+</html>
+    
+  </body>
+  
+</html>
